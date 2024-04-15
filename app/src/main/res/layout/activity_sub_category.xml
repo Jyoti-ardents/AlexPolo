@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SubCategoryActivity"
+    android:background="@color/light_grey"
+    >
+    <!--    <ImageView-->
+    <!--        android:id="@+id/btn_back"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        android:background="@drawable/backarrow_bg"-->
+    <!--        android:padding="3dp"-->
+    <!--        android:src="@drawable/baseline_keyboard_backspace_24"-->
+    <!--        android:layout_marginStart="27dp"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/subcat_name"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Subcategory Name"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:layout_marginStart="80dp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:layout_marginTop="18dp"-->
+    <!--        />-->
+    <include layout="@layout/header_lay"
+        android:id="@+id/subCategory_header"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subCategory_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="68dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:spanCount="2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

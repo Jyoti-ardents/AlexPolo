@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AlexPolo</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_pass">Forgot Password ?</string>
+    <string name="all_categories">All Categories</string>
+    <string name="product">Product</string>
+    <string name="new_address">Add New Address</string>
+    <string name="address">Address</string>
+    <string name="order_summary">Order_Summary</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_cart">My Cart</string>
+</resources>

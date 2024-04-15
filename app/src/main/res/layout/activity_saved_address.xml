@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SavedAddressActivity">
+    <!--    <ImageView-->
+    <!--        android:id="@+id/btn_back"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        android:background="@drawable/backarrow_bg"-->
+    <!--        android:padding="3dp"-->
+    <!--        android:src="@drawable/baseline_keyboard_backspace_24"-->
+    <!--        android:layout_marginStart="27dp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView18"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="50dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:text="Add New Address"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/btn_back"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:textSize="20sp"/>-->
+    <include layout="@layout/header_lay"
+        android:id="@+id/savedAddress_header"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame_addAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/savedAddress_header"
+        android:orientation="horizontal"
+        android:background="@drawable/address_bg"
+        android:padding="10dp"
+
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_24"
+            app:tint="@color/black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add new address"
+            android:textSize="16sp"
+            android:layout_marginStart="40dp"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
+        android:text="Saved Addresses"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_addAddress" />
+    <Button
+        android:id="@+id/btn_Countinue"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/black"
+        android:text="Continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
