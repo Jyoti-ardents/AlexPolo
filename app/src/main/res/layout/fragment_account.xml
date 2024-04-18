@@ -49,54 +49,103 @@
             android:src="@drawable/baseline_photo_camera_24" />
     </androidx.cardview.widget.CardView>
 
-<!--    <TextView-->
-<!--        android:id="@+id/username"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="52dp"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        android:text="Jyoti Maurya"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/card_userimg"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/usermail"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:text="jyotimaurya6844@gmail.com"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/card_userimg"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/username" />-->
-    <FrameLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:layout_constraintTop_toBottomOf="@id/card_userimg">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Your Name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_userimg" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:drawableRight="@drawable/baseline_person_24"
+        android:layout_marginHorizontal="20dp"
+        android:text="Jyoti Maurya"
+        android:textStyle="bold"
+        android:textColorHint="@color/light_gre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_userimg"
+        android:background="@drawable/edittext_bg"
+        android:padding="10dp"
+        />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_person_24"
-                android:drawablePadding="10dp"
-                />
-        </LinearLayout>
-
-    </FrameLayout>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:text="Your Email"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableRight="@drawable/baseline_email_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+       android:text="jyotimaurya@gmail.com"
+        android:textStyle="bold"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColorHint="@color/light_gre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:text="Phone Number"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mail" />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableRight="@drawable/baseline_phone_24"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:text="9876543210"
+        android:textStyle="bold"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:textColorHint="@color/light_gre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mail" />
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/black"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"/>
 
 
 

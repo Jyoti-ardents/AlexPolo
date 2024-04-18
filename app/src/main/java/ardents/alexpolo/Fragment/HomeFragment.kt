@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.GravityCompat
 import ardents.alexpolo.Adapter.CategoryAdapter
 import ardents.alexpolo.Model.CategoryModel
 import ardents.alexpolo.R
+import ardents.alexpolo.databinding.DrawerLayBinding
 import ardents.alexpolo.databinding.FragmentHomeBinding
 import com.denzcoskun.imageslider.models.SlideModel
 
@@ -15,12 +17,12 @@ import com.denzcoskun.imageslider.models.SlideModel
 class HomeFragment : Fragment() {
 
     lateinit var binding:FragmentHomeBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentHomeBinding.inflate(inflater,container,false)
+
 
         val sliderList=ArrayList<SlideModel>()
         sliderList.add(SlideModel(R.drawable.s2))

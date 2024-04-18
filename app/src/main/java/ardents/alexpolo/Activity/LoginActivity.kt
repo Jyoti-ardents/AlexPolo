@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                 !Helper.validateEditText(binding.loginPasswd)){
                 return@setOnClickListener
             }else{
-                viewModel.login(mail,password)
+                viewModel.login(applicationContext,mail,password)
             }
             binding.loginMail.text=null
             binding.loginPasswd.text=null

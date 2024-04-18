@@ -1,5 +1,6 @@
 package ardents.alexpolo.ViewModel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,9 +14,9 @@ class LoginViewModel:ViewModel() {
     val loginData:LiveData<NetworkResult<LoginModel>>
         get()=loginRepo.loginData
 
-    fun login(email:String,password:String){
+    fun login(context: Context,email:String,password:String){
         viewModelScope.launch {
-            loginRepo.loginUser(email,password)
+            loginRepo.loginUser(context,email,password)
         }
 
     }
