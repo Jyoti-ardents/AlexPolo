@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import ardents.alexpolo.Fragment.AccountFragment
 import ardents.alexpolo.Fragment.CartFragment
 import ardents.alexpolo.Fragment.CategoryFragment
 import ardents.alexpolo.Fragment.HomeFragment
 import ardents.alexpolo.Fragment.NotificationFragment
 import ardents.alexpolo.R
+import ardents.alexpolo.ViewModel.LoginViewModel
 import ardents.alexpolo.databinding.ActivityMainBinding
 import ardents.alexpolo.databinding.DrawerLayBinding
 import ardents.alexpolo.databinding.FragmentAccountBinding
@@ -26,11 +28,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerCategories:LinearLayout
     lateinit var drawerAddress:LinearLayout
     lateinit var drawerLogout:LinearLayout
+    lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         drawerLayBinding=DrawerLayBinding.inflate(LayoutInflater.from(applicationContext),null,false)
+        viewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
+        SharedPrefManager.getInstance(this).getToken()?.let { viewModel.userData(this, it.token) }
 
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, HomeFragment())

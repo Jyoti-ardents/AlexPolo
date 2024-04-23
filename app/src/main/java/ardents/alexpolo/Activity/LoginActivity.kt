@@ -14,6 +14,7 @@ import ardents.alexpolo.ViewModel.LoginViewModel
 import ardents.alexpolo.databinding.ActivityLoginBinding
 import ardents.alexpolo.utils.Helper
 import ardents.alexpolo.utils.NetworkResult
+import ardents.alexpolo.utils.SharedPrefManager
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -22,13 +23,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         viewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.loginData.observe(this, Observer {
             Helper.dismissProgressDialog()
             when(it){
                 is NetworkResult.Success->{
-                    Toast.makeText(this, it.data.toString(), Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(this, it.data.toString(), Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this,MainActivity::class.java))
+                    finish()
                 }
                 is NetworkResult.Error->{
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
@@ -52,6 +55,8 @@ class LoginActivity : AppCompatActivity() {
             binding.loginPasswd.text=null
 
         }
+
+
 
         binding.txtSignup.setOnClickListener {
             val intent= Intent(applicationContext,SignUpActivity::class.java)

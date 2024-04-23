@@ -19,10 +19,10 @@ class ForgetPasswordActivity : AppCompatActivity() {
         binding=ActivityForgetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.forgotpassHeader.txtHeader.text=getString(R.string.forgot_pass)
-        binding.forgotpassHeader.btnBack.setOnClickListener {
-            finish()
-        }
+//        binding.forgotpassHeader.txtHeader.text=getString(R.string.forgot_pass)
+//        binding.forgotpassHeader.btnBack.setOnClickListener {
+//            finish()
+//        }
 
         viewModel= ViewModelProvider(this).get(ForgotPasswordViewModel::class.java)
 
@@ -36,7 +36,7 @@ class ForgetPasswordActivity : AppCompatActivity() {
                 }
 
                 is NetworkResult.Error -> {
-                    Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
 
                 is NetworkResult.Loading -> {

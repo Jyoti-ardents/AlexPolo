@@ -32,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
             Helper.dismissProgressDialog()
             when(it){
                 is NetworkResult.Success->{
-                    startActivity(Intent(applicationContext,MainActivity::class.java))
+                    startActivity(Intent(applicationContext,LoginActivity::class.java))
                     finish()
                 }
                 is NetworkResult.Error->{

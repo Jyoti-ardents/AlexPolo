@@ -54,13 +54,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="Your Name"
+        android:text="First Name"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_userimg" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/fname"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
@@ -68,7 +68,7 @@
         android:inputType="text"
         android:drawableRight="@drawable/baseline_person_24"
         android:layout_marginHorizontal="20dp"
-        android:text="Jyoti Maurya"
+        android:text="iji"
         android:textStyle="bold"
         android:textColorHint="@color/light_gre"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,35 +77,35 @@
         android:background="@drawable/edittext_bg"
         android:padding="10dp"
         />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
-        android:text="Your Email"
+        android:text="Last Name"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name" />
+        app:layout_constraintTop_toBottomOf="@id/fname" />
     <EditText
-        android:id="@+id/mail"
+        android:id="@+id/lname"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/edittext_bg"
-        android:drawableRight="@drawable/baseline_email_24"
+        android:drawableRight="@drawable/baseline_person_24"
         android:drawablePadding="10dp"
         android:ems="10"
-       android:text="jyotimaurya@gmail.com"
+        android:text="jkdj"
         android:textStyle="bold"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:padding="10dp"
         android:textColorHint="@color/light_gre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/fname" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
         android:text="Phone Number"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mail" />
+        app:layout_constraintTop_toBottomOf="@id/lname" />
     <EditText
         android:id="@+id/phone"
         android:layout_width="0dp"
@@ -125,7 +125,7 @@
         android:drawableRight="@drawable/baseline_phone_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:text="9876543210"
+        android:text="hkj"
         android:textStyle="bold"
         android:inputType="phone"
         android:padding="10dp"
@@ -133,7 +133,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail" />
+        app:layout_constraintTop_toBottomOf="@+id/lname" />
+
     <Button
         android:id="@+id/btn_update"
         android:layout_width="0dp"
