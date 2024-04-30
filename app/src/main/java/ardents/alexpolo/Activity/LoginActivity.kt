@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-
         binding.forgotpass.setOnClickListener {
             startActivity(Intent(applicationContext,ForgetPasswordActivity::class.java))
         }

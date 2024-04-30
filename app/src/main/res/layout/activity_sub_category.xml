@@ -5,33 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.SubCategoryActivity"
-    android:background="@color/light_grey"
     >
-    <!--    <ImageView-->
-    <!--        android:id="@+id/btn_back"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:background="@drawable/backarrow_bg"-->
-    <!--        android:padding="3dp"-->
-    <!--        android:src="@drawable/baseline_keyboard_backspace_24"-->
-    <!--        android:layout_marginStart="27dp"/>-->
-    <!--    <TextView-->
-    <!--        android:id="@+id/subcat_name"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Subcategory Name"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        android:layout_marginStart="80dp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        android:textSize="18sp"-->
-    <!--        android:layout_marginTop="18dp"-->
-    <!--        />-->
     <include layout="@layout/header_lay"
         android:id="@+id/subCategory_header"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subcatRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="65dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subCategory_header"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,9 +26,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="28dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subcatRecycler"
         app:spanCount="2" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extended_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:text="FILTER"
+        app:icon="@drawable/filter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
