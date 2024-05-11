@@ -9,12 +9,13 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ardents.alexpolo.Activity.ProductActivity
+import ardents.alexpolo.Model.ChildesItem
 import ardents.alexpolo.Model.SubCatModel
 import ardents.alexpolo.R
 import ardents.alexpolo.databinding.SubcatlayBinding
 import com.google.android.material.chip.Chip
 
-class SubCatAdapter(val context: Context, val subcatList: List<SubCatModel>) :
+class SubCatAdapter(val context: Context, val subcatList: List<ChildesItem>,private val onItemClick: (ChildesItem) -> Unit) :
 
     RecyclerView.Adapter<SubCatAdapter.ViewHolder>() {
     var index=-1
@@ -34,17 +35,26 @@ class SubCatAdapter(val context: Context, val subcatList: List<SubCatModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.subcatName.text=subcatList.get(position).subcatName
+        val subcat=subcatList[position]
+        holder.binding.subcatName.text=subcat.name
+        holder.binding.subcatName.setOnClickListener {
+            onItemClick(subcat)
+            index=position
+            notifyDataSetChanged()
+        }
+        holder.binding.subcatName.isSelected = index == position
+
+
 
 //        holder.binding.chipSubcatName.setOnClickListener {
 //            val intent = Intent(context, ProductActivity::class.java)
 //            context.startActivity(intent)
 //
 //        }
-        holder.binding.subcatName.setOnClickListener {
-            index=position
-            notifyDataSetChanged()
-        }
+//        holder.binding.subcatName.setOnClickListener {
+//            index=position
+//            notifyDataSetChanged()
+//        }
         if (index==position){
             holder.binding.subcatName.setBackgroundResource(R.drawable.selected_chipbg)
             holder.binding.subcatName.setTextColor(ContextCompat.getColor(context,R.color.white))

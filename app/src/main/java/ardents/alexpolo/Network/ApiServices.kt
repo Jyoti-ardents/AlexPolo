@@ -1,11 +1,16 @@
 package ardents.alexpolo.Network
 
+import ardents.alexpolo.Model.BannerModelItem
+import ardents.alexpolo.Model.CategoryModelItem
+import ardents.alexpolo.Model.DeleteAccountModel
 import ardents.alexpolo.Model.ForgotPassword
 import ardents.alexpolo.Model.LoginModel
+import ardents.alexpolo.Model.ProductModelItem
 import ardents.alexpolo.Model.ProfileUpdateModel
 import ardents.alexpolo.Model.ProfileUpdateRequest
 import ardents.alexpolo.Model.RegisterModel
 import ardents.alexpolo.Model.UserInfoModel
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -14,6 +19,8 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiServices {
     @FormUrlEncoded
@@ -50,6 +57,20 @@ interface ApiServices {
         @Header("Authorization") token: String,
         @Body body:ProfileUpdateRequest
     ):Response<ProfileUpdateModel>
+
+    @GET("categories")
+    suspend fun getCategory(): Response<List<CategoryModelItem>>
+
+    @GET("banners")
+    suspend fun bannerData(@Query("banner_type") banner_type:String):Response<List<BannerModelItem>>
+
+    @GET("categories/products/{id}")
+    suspend fun products(@Path("id") id:String):Response<List<ProductModelItem>>
+
+    @GET("customer/account-delete/{id}")
+    suspend fun deleteAccount(
+        @Header("Authorization") token:String,
+        @Path("id") id:String):Response<DeleteAccountModel>
 
 
 }

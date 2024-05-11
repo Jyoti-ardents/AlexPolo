@@ -19,10 +19,12 @@
         tools:layout_editor_absoluteY="65dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subCategory_header"
+        android:clickable="true"
+        android:focusable="true"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subCategory_recycler"
+        android:id="@+id/product_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"

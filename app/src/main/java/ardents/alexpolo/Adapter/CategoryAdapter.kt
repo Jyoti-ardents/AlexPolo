@@ -4,15 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ardents.alexpolo.Activity.SubCategoryActivity
 import ardents.alexpolo.Model.CategoryModel
+import ardents.alexpolo.Model.CategoryModelItem
+import ardents.alexpolo.Model.ChildesItem
 import ardents.alexpolo.databinding.CategoryLayoutBinding
+import ardents.alexpolo.utils.Constant
 import com.bumptech.glide.Glide
 
-class CategoryAdapter(val context: Context,val categoryList:List<CategoryModel>): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(val context: Context,var categoryList:List<CategoryModelItem>): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
     class ViewHolder(val binding: CategoryLayoutBinding):RecyclerView.ViewHolder(binding.root){
 
+    }
+    fun updateCategoryList(list:List<CategoryModelItem>){
+        categoryList=list
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,11 +35,13 @@ class CategoryAdapter(val context: Context,val categoryList:List<CategoryModel>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       Glide.with(context).load(categoryList.get(position).category_img).into(holder.binding.categoryImg)
-        holder.binding.categoryName.text=categoryList.get(position).category_name
+       Glide.with(context).load(categoryList.get(position).image_path).into(holder.binding.categoryImg)
+        holder.binding.categoryName.text=categoryList.get(position).name
         holder.binding.cardCategory.setOnClickListener {
             val intent=Intent(context, SubCategoryActivity::class.java)
-            intent.putExtra("categoryName",categoryList.get(position).category_name)
+            Constant.subCategoryData= categoryList.get(position).childes as List<ChildesItem>
+            intent.putExtra("categoryName",categoryList.get(position).name)
+            intent.putExtra("categoryId",categoryList.get(position).id.toString())
             context.startActivity(intent)
 
         }

@@ -3,11 +3,14 @@ package ardents.alexpolo.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ardents.alexpolo.Fragment.AccountFragment
 import ardents.alexpolo.Fragment.CartFragment
@@ -19,6 +22,7 @@ import ardents.alexpolo.ViewModel.LoginViewModel
 import ardents.alexpolo.databinding.ActivityMainBinding
 import ardents.alexpolo.databinding.DrawerLayBinding
 import ardents.alexpolo.databinding.FragmentAccountBinding
+import ardents.alexpolo.utils.NetworkResult
 import ardents.alexpolo.utils.SharedPrefManager
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +32,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerCategories:LinearLayout
     lateinit var drawerAddress:LinearLayout
     lateinit var drawerLogout:LinearLayout
+    lateinit var drawerdelAccount:LinearLayout
     lateinit var viewModel: LoginViewModel
+   
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -108,7 +114,29 @@ class MainActivity : AppCompatActivity() {
             fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, CategoryFragment()).commit()
             binding.drawer.closeDrawer(GravityCompat.START)
         }
-
+        drawerdelAccount=findViewById(R.id.drawer_delAccount)
+        drawerdelAccount.setOnClickListener {
+            viewModel.delAccountData.observe(this, Observer { 
+                when(it){
+                    is NetworkResult.Success->{
+                        Toast.makeText(this,"${it.data}",Toast.LENGTH_SHORT).show()
+                    }is NetworkResult.Error->{
+                    Toast.makeText(this,"${it.message}",Toast.LENGTH_SHORT).show()
+                    Log.d("logincredential","error===${it.message}")
+                    }is NetworkResult.Loading->{
+                    Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+            finish()
+        }
+        val token=SharedPrefManager.getInstance(this).getToken()?.token!!
+        val id=SharedPrefManager.getInstance(this).getUserInfo().id
+        Log.d("logincredential",id)
+        Log.d("logincredential",token)
+        viewModel.userDeleteAccount(token,id)
+       // Log.d("logincredential","token===${SharedPrefManager.getInstance(this).getToken()?.token!!}")
+       // Log.d("logincredential","id===${SharedPrefManager.getInstance(this).getUserInfo().id}")
         drawerLogout=findViewById(R.id.drawer_logout)
         drawerLogout.setOnClickListener {
             SharedPrefManager.getInstance(this).logout()
