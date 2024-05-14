@@ -35,8 +35,8 @@ class ProductAdapter(val context: Context, var subCategoryList: List<ProductMode
         holder.binding.productRating.text="5.0"
         holder.binding.productName.text=subCategoryList.get(position).name
         //Glide.with(context).load(subCategoryList.get(position).img).into(holder.binding.subcatImg)
-        holder.binding.productPrice.text= subCategoryList.get(position).purchasePrice.toString()
-        holder.binding.productOldprice.text=subCategoryList.get(position).unitPrice.toString()
+        holder.binding.productPrice.text= subCategoryList.get(position).purchase_price.toString()
+        holder.binding.productOldprice.text=subCategoryList.get(position).unit_price.toString()
         holder.binding.productOffer.text=subCategoryList.get(position).discount.toString()+"% off"
         holder.binding.subCategoryLayout.setOnClickListener {
             val intent=Intent(context,ProductDetailActivity::class.java)

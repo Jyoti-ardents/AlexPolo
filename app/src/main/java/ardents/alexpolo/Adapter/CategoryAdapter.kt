@@ -39,7 +39,8 @@ class CategoryAdapter(val context: Context,var categoryList:List<CategoryModelIt
         holder.binding.categoryName.text=categoryList.get(position).name
         holder.binding.cardCategory.setOnClickListener {
             val intent=Intent(context, SubCategoryActivity::class.java)
-            Constant.subCategoryData= categoryList.get(position).childes as List<ChildesItem>
+            Constant.subCategoryData= categoryList.get(position).childes as ArrayList<ChildesItem>
+
             intent.putExtra("categoryName",categoryList.get(position).name)
             intent.putExtra("categoryId",categoryList.get(position).id.toString())
             context.startActivity(intent)

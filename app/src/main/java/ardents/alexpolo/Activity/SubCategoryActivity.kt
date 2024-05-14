@@ -18,7 +18,7 @@ import ardents.alexpolo.utils.NetworkResult
 
 class SubCategoryActivity : AppCompatActivity() {
     lateinit var binding: ActivitySubCategoryBinding
-    val subCatList:List<ChildesItem> = Constant.subCategoryData
+    val subCatList:ArrayList<ChildesItem> = Constant.subCategoryData
     lateinit var viewModel: ProductViewModel
     lateinit var  productAdapter:ProductAdapter
     var productList:List<ProductModelItem> = emptyList()
@@ -56,12 +56,18 @@ class SubCategoryActivity : AppCompatActivity() {
                     Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
                 }
 
+                else -> {
+                    Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
+                }
             }
         })
+        subCatList.add(0,ChildesItem(name = "All", id = subcategoryId?.toInt()))
         val adapter=SubCatAdapter(applicationContext,subCatList){
-            viewModel.getProduct(subcategoryId.toString())
+           // viewModel.getProduct(subcategoryId.toString())
+            viewModel.getProduct(it.id.toString())
         }
         binding.subcatRecycler.adapter=adapter
+
 
 
         binding.subCategoryHeader.btnBack.setOnClickListener {

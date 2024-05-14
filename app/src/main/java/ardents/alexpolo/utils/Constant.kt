@@ -5,6 +5,6 @@ import ardents.alexpolo.Model.ChildesItem
 
 class Constant {
     companion object{
-        lateinit var subCategoryData:List<ChildesItem>
+        lateinit var subCategoryData:ArrayList<ChildesItem>
     }
 }

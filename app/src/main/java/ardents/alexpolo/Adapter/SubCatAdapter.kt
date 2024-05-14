@@ -44,17 +44,6 @@ class SubCatAdapter(val context: Context, val subcatList: List<ChildesItem>,priv
         }
         holder.binding.subcatName.isSelected = index == position
 
-
-
-//        holder.binding.chipSubcatName.setOnClickListener {
-//            val intent = Intent(context, ProductActivity::class.java)
-//            context.startActivity(intent)
-//
-//        }
-//        holder.binding.subcatName.setOnClickListener {
-//            index=position
-//            notifyDataSetChanged()
-//        }
         if (index==position){
             holder.binding.subcatName.setBackgroundResource(R.drawable.selected_chipbg)
             holder.binding.subcatName.setTextColor(ContextCompat.getColor(context,R.color.white))
