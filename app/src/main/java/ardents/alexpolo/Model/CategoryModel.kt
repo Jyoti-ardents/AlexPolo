@@ -21,18 +21,7 @@ data class CategoryModelItem(
 )
 
 data class ChildesItem(
-	val childes: List<Any?>? = null,
-	val updatedAt: String? = null,
-	val parentId: Int? = null,
-	val translations: List<Any?>? = null,
 	val name: String? = null,
-	val icon: Any? = null,
-	val createdAt: String? = null,
-	val homeStatus: Int? = null,
 	val id: Int? = null,
-	val position: Int? = null,
-	val priority: Int? = null,
-	val slug: String? = null
-
 )
 

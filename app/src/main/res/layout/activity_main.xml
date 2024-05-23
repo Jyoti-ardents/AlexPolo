@@ -47,11 +47,11 @@
                 </LinearLayout>
 
                 <EditText
+                    android:focusable="false"
                     android:id="@+id/edt_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/search_bg"
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/baseline_search_24"
@@ -59,7 +59,7 @@
                     android:ems="10"
                     android:hint="Search any product..."
                     android:inputType="text"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.6"
                     app:layout_constraintStart_toStartOf="parent"

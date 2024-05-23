@@ -12,6 +12,7 @@ import ardents.alexpolo.Model.CategoryModelItem
 import ardents.alexpolo.Model.ChildesItem
 import ardents.alexpolo.databinding.CategoryLayoutBinding
 import ardents.alexpolo.utils.Constant
+import ardents.alexpolo.utils.SharedPrefManager
 import com.bumptech.glide.Glide
 
 class CategoryAdapter(val context: Context,var categoryList:List<CategoryModelItem>): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
@@ -39,8 +40,8 @@ class CategoryAdapter(val context: Context,var categoryList:List<CategoryModelIt
         holder.binding.categoryName.text=categoryList.get(position).name
         holder.binding.cardCategory.setOnClickListener {
             val intent=Intent(context, SubCategoryActivity::class.java)
-            Constant.subCategoryData= categoryList.get(position).childes as ArrayList<ChildesItem>
-
+            SharedPrefManager.getInstance(context).setChildesList(categoryList.get(position).childes)
+           // Constant.subCategoryData= categoryList.get(position).childes as ArrayList<ChildesItem>
             intent.putExtra("categoryName",categoryList.get(position).name)
             intent.putExtra("categoryId",categoryList.get(position).id.toString())
             context.startActivity(intent)

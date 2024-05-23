@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         drawerLayBinding=DrawerLayBinding.inflate(LayoutInflater.from(applicationContext),null,false)
         viewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
         SharedPrefManager.getInstance(this).getToken()?.let { viewModel.userData(this, it.token) }
+     //   viewModel.userData(this,SharedPrefManager.getInstance(this).getToken()?.token!!)
 
         val fragmentManager = supportFragmentManager
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, HomeFragment())
@@ -115,32 +116,52 @@ class MainActivity : AppCompatActivity() {
             binding.drawer.closeDrawer(GravityCompat.START)
         }
         drawerdelAccount=findViewById(R.id.drawer_delAccount)
-        drawerdelAccount.setOnClickListener {
-            viewModel.delAccountData.observe(this, Observer { 
-                when(it){
-                    is NetworkResult.Success->{
-                        Toast.makeText(this,"${it.data}",Toast.LENGTH_SHORT).show()
-                    }is NetworkResult.Error->{
-                    Toast.makeText(this,"${it.message}",Toast.LENGTH_SHORT).show()
-                    Log.d("logincredential","error===${it.message}")
-                    }is NetworkResult.Loading->{
-                    Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
+//        drawerdelAccount.setOnClickListener {
+//            viewModel.delAccountData.observe(this, Observer {
+//                when(it){
+//                    is NetworkResult.Success->{
+//                        Toast.makeText(this,"${it.data}",Toast.LENGTH_SHORT).show()
+//                    }is NetworkResult.Error->{
+//                    Toast.makeText(this,"${it.message}",Toast.LENGTH_SHORT).show()
+//                    Log.d("logincredential","error===${it.message}")
+//                    }is NetworkResult.Loading->{
+//                    Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            })
+//            finish()
+//        }
+        viewModel.delAccountData.observe(this, Observer {
+            when(it){
+                is NetworkResult.Success->{
+                    Toast.makeText(this,"${it.data}",Toast.LENGTH_SHORT).show()
+                }is NetworkResult.Error->{
+                Toast.makeText(this,"${it.message}",Toast.LENGTH_SHORT).show()
+                Log.d("logincredential","error===${it.message}")
+            }is NetworkResult.Loading->{
+                Toast.makeText(this,"Please Wait",Toast.LENGTH_SHORT).show()
+            }
+            }
             finish()
-        }
-        val token=SharedPrefManager.getInstance(this).getToken()?.token!!
-        val id=SharedPrefManager.getInstance(this).getUserInfo().id
-        Log.d("logincredential",id)
-        Log.d("logincredential",token)
-        viewModel.userDeleteAccount(token,id)
+        })
+//        val token=SharedPrefManager.getInstance(this).getToken()?.token!!.toString()
+//        val id=SharedPrefManager.getInstance(this).getUserInfo().id.toString()
+//        Log.d("logincredential",id)
+//        Log.d("logincredential",token)
+//        drawerdelAccount.setOnClickListener {
+//            viewModel.userDeleteAccount(token,id)
+//        }
+
        // Log.d("logincredential","token===${SharedPrefManager.getInstance(this).getToken()?.token!!}")
        // Log.d("logincredential","id===${SharedPrefManager.getInstance(this).getUserInfo().id}")
         drawerLogout=findViewById(R.id.drawer_logout)
         drawerLogout.setOnClickListener {
             SharedPrefManager.getInstance(this).logout()
             finish()
+        }
+
+        binding.edtSearch.setOnClickListener {
+            startActivity(Intent(this,ProductSearchActivity::class.java))
         }
 
     }

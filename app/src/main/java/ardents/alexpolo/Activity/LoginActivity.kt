@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -30,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
             when(it){
                 is NetworkResult.Success->{
                    // Toast.makeText(this, it.data.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,"token"+SharedPrefManager.getInstance(this).getToken().toString(),Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this,MainActivity::class.java))
                     finish()
                 }
@@ -82,6 +84,5 @@ class LoginActivity : AppCompatActivity() {
         binding.forgotpass.setOnClickListener {
             startActivity(Intent(applicationContext,ForgetPasswordActivity::class.java))
         }
-
     }
 }

@@ -15,10 +15,12 @@ import ardents.alexpolo.ViewModel.ProductViewModel
 import ardents.alexpolo.databinding.ActivitySubCategoryBinding
 import ardents.alexpolo.utils.Constant
 import ardents.alexpolo.utils.NetworkResult
+import ardents.alexpolo.utils.SharedPrefManager
 
 class SubCategoryActivity : AppCompatActivity() {
     lateinit var binding: ActivitySubCategoryBinding
-    val subCatList:ArrayList<ChildesItem> = Constant.subCategoryData
+    //val subCatList:ArrayList<ChildesItem> = Constant.subCategoryData
+    var subCatList:ArrayList<ChildesItem>?=null
     lateinit var viewModel: ProductViewModel
     lateinit var  productAdapter:ProductAdapter
     var productList:List<ProductModelItem> = emptyList()
@@ -27,22 +29,32 @@ class SubCategoryActivity : AppCompatActivity() {
         binding=ActivitySubCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel=ViewModelProvider(this).get(ProductViewModel::class.java)
-        val subcategoryName=intent.getStringExtra("categoryName")
-        val subcategoryId=intent.getStringExtra("categoryId")
-        Log.d("hellomydata",subcategoryId.toString())
+        val categoryName=intent.getStringExtra("categoryName")
+        val categoryId=intent.getStringExtra("categoryId")
+        Log.d("hellomydata",subCatList.toString())
+        binding.subCategoryHeader.txtHeader.text=categoryName
+
+        subCatList=SharedPrefManager.getInstance(this).getChildesList()
 
 
 
-//        val subCategoryList=ArrayList<SubCategoryModel>()
-//        subCategoryList.add(SubCategoryModel("https://www.google.com/imgres?imgurl=https%3A%2F%2Fassets.ajio.com%2Fmedias%2Fsys_master%2Froot%2F20230720%2Fo4uH%2F64b94a8feebac147fc7eab72%2F-473Wx593H-443016054-blue-MODEL.jpg&tbnid=ns2Mn_a6IxvG8M&vet=12ahUKEwjPgL2VkYOFAxWzTGwGHQrkBpMQMyhMegUIARC0Ag..i&imgrefurl=https%3A%2F%2Fwww.ajio.com%2Fdnmx-mid-wash-ripped-slim-fit-jeans%2Fp%2F443016054_blue&docid=79J1dlGku5txmM&w=473&h=593&itg=1&q=jeans%20image&hl=en-GB&ved=2ahUKEwjPgL2VkYOFAxWzTGwGHQrkBpMQMyhMegUIARC0Ag","5.0","Tshirt","500","300","15%"))
-//        subCategoryList.add(SubCategoryModel("https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.realmenrealstyle.com%2Fwp-content%2Fuploads%2F2021%2F07%2Fmens-jeans.jpg&tbnid=2rKangj6qCjh_M&vet=12ahUKEwjPgL2VkYOFAxWzTGwGHQrkBpMQMygJegUIARCHAQ..i&imgrefurl=https%3A%2F%2Fwww.realmenrealstyle.com%2Fjeans-for-body-type%2F&docid=N2fGfnXVZcTgCM&w=2048&h=1400&q=jeans%20image&hl=en-GB&ved=2ahUKEwjPgL2VkYOFAxWzTGwGHQrkBpMQMygJegUIARCHAQ","5.0","Tshirt","500","300","15%"))
-//
-//        val adpter= ProductAdapter(applicationContext,subCategoryList)
-//        binding.productRecycler.adapter=adpter
         productAdapter=ProductAdapter(applicationContext,productList)
         binding.productRecycler.adapter=productAdapter
 
-        binding.subCategoryHeader.txtHeader.text=subcategoryName
+        val allOption=subCatList?.find { it?.name=="All" }
+        if (allOption == null){
+            subCatList?.add(0,ChildesItem(name = "All", id = categoryId?.toInt()))
+        }
+        val adapter=SubCatAdapter(applicationContext,subCatList!!){
+            // viewModel.getProduct(subcategoryId.toString())
+            viewModel.getProduct(it.id.toString())
+        }
+        binding.subcatRecycler.adapter=adapter
+
+
+
+
+
         viewModel.productData.observe(this, Observer {
             when(it){
                 is NetworkResult.Success->{
@@ -61,12 +73,9 @@ class SubCategoryActivity : AppCompatActivity() {
                 }
             }
         })
-        subCatList.add(0,ChildesItem(name = "All", id = subcategoryId?.toInt()))
-        val adapter=SubCatAdapter(applicationContext,subCatList){
-           // viewModel.getProduct(subcategoryId.toString())
-            viewModel.getProduct(it.id.toString())
-        }
-        binding.subcatRecycler.adapter=adapter
+
+        viewModel.getProduct(categoryId.toString())
+
 
 
 

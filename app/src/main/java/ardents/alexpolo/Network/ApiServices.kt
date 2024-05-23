@@ -1,11 +1,15 @@
 package ardents.alexpolo.Network
 
+import ardents.alexpolo.Model.AddToCartModel
 import ardents.alexpolo.Model.BannerModelItem
+import ardents.alexpolo.Model.BestSellingModel
 import ardents.alexpolo.Model.CategoryModelItem
 import ardents.alexpolo.Model.DeleteAccountModel
 import ardents.alexpolo.Model.ForgotPassword
 import ardents.alexpolo.Model.LoginModel
+import ardents.alexpolo.Model.ProductDetailsModel
 import ardents.alexpolo.Model.ProductModelItem
+import ardents.alexpolo.Model.ProductsItem
 import ardents.alexpolo.Model.ProfileUpdateModel
 import ardents.alexpolo.Model.ProfileUpdateRequest
 import ardents.alexpolo.Model.RegisterModel
@@ -71,6 +75,33 @@ interface ApiServices {
     suspend fun deleteAccount(
         @Header("Authorization") token:String,
         @Path("id") id:String):Response<DeleteAccountModel>
+
+    @GET("products/details/{id}")
+    suspend fun ProductDetails(
+        @Path("id") slugid:String):Response<ProductDetailsModel>
+
+    @FormUrlEncoded
+    @POST("cart/add")
+    suspend fun addToCart(
+        @Header("Authorization") token:String,
+        @Field("id") productId:String,
+        @Field("quantity") quantity:String
+    ):Response<AddToCartModel>
+
+    @GET("products/latest")
+    suspend fun latestProduct():Response<BestSellingModel>
+
+    @GET("products/top-rated")
+    suspend fun topRatedProducts():Response<BestSellingModel>
+
+    @GET("products/best-sellings")
+    suspend fun bestSellingProduct():Response<BestSellingModel>
+
+    @GET("products/discounted-product")
+    suspend fun discountProduct():Response<BestSellingModel>
+
+    @GET("products/search")
+   suspend fun searchProduct(@Query("name") name:String):Response<BestSellingModel>
 
 
 }

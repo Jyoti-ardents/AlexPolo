@@ -1,27 +1,23 @@
 package ardents.alexpolo.Model
 
-data class ProductModel(
-	val productModel: List<ProductModelItem?>? = null
-)
-
-data class ProductModelItem(
+data class ProductDetailsModel(
 	val discount: Int? = null,
 	val details: String? = null,
 	val id: Int? = null,
 	//val categoryIds: List<CategoryIdsItem?>? = null,
 	val slug: String? = null,
 	val images: List<String?>? = null,
-	val thumbnail: String? = null,
 	val minQty: Int? = null,
-	val unit: String? = null,
-	val userId: Int? = null,
-	val taxType: String? = null,
-	val name: String? = null,
+	val published: Int? = null,
 	val purchase_price: Double? = null,
-	val status: Int? = null,
-	val colors: List<Any?>? = null,
+	val reviewsCount: Int? = null,
+	val name: String? = null,
+	val multiplyQty: Int? = null,
+	//val colors: List<String?>? = null,
+	val minimumOrderQty: Int? = null,
 	val shippingCost: Int? = null,
-	val unit_price: Double? = null
+	val unit_price: Double? = null,
+	val currentStock: Int? = null,
 
 )
 

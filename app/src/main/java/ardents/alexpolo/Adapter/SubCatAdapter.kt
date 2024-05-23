@@ -15,7 +15,7 @@ import ardents.alexpolo.R
 import ardents.alexpolo.databinding.SubcatlayBinding
 import com.google.android.material.chip.Chip
 
-class SubCatAdapter(val context: Context, val subcatList: List<ChildesItem>,private val onItemClick: (ChildesItem) -> Unit) :
+class SubCatAdapter(val context: Context, val subcatList: ArrayList<ChildesItem>,private val onItemClick: (ChildesItem) -> Unit) :
 
     RecyclerView.Adapter<SubCatAdapter.ViewHolder>() {
     var index=-1
